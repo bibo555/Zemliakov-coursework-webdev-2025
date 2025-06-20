@@ -1,0 +1,1461 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; 
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif; /* Poppins для заголовков */
+    font-weight: 600;
+ 
+}
+
+h1 {
+    font-family: 'Poppins';
+    font-weight: 600;
+    margin-top: 1;
+    margin-left: 5;
+    margin-bottom: 1.5rem;
+    padding-top: 0; 
+} 
+
+.header {
+   
+    color: white;
+    padding: 0;
+    width: 100%;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    z-index: 1000; 
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.logo {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 1000;
+    color: white;
+    margin-left: 6px;
+    text-decoration: none; /* Убираем подчеркивание */
+    transition: color 0.3s; /* Плавное изменение цвета при наведении */
+}
+
+.logo:hover {
+    color: #f0f0f0; /* Легкое изменение цвета при наведении */
+}
+
+.navbar-menu {
+    display: flex;
+    gap: 11rem; /* Большой отступ между пунктами меню */
+    margin-left: auto; /* Убираем auto, так как justify-content уже делает работу */
+}
+
+.navbar-menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem; /* Фиксированный размер шрифта */
+    font-family: 'Poppins', sans-serif; /* Такой же шрифт как у заголовков */
+    
+    white-space: nowrap; /* Запрет переноса текста */
+    transition: all 0.3s;
+}
+
+.user-profile {
+    margin-left: auto; 
+}
+
+
+.profile-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid white;
+}
+
+.btn {
+    color: white;
+}
+
+.profile-menu {
+    position: absolute;
+    right: 1rem;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 0.5rem;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.background img{
+    width: 1920px;
+    height: 966px;
+}
+.profile-menu a {
+    color: #333;
+    padding: 0.5rem;
+    text-decoration: none;
+}
+
+.profile-menu a:hover {
+    background: #f5f5f5;
+}
+
+.hidden {
+    display: none;
+}
+
+.main-content {
+    margin-top: 10px;
+    padding: 1rem;
+    max-width: 1300px;
+    width: 100%;
+    
+    margin-left: 145px;
+    z-index: 1;
+}
+
+.home-page {
+    padding-top: 40px; /* Поднимаем контент выше */
+    margin: 0 auto; /* Центрирование */
+    max-width: 1920px; /* Ограничение ширины */
+    max-height: 600px;
+}
+
+.home-page p {
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    margin: 20px 0; /* Отступы сверху и снизу */
+    
+}
+
+
+.ticket-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    max-width: 900px;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 1rem;
+}
+
+.ticket-header {
+    margin-bottom: 1rem;
+}
+
+.ticket-header .airline {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: black;
+}
+
+.ticket-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Выравниваем по центру по вертикали */
+}
+
+.flight-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+}
+
+.flight-direction {
+    display: flex;
+    flex-direction: column;
+}
+
+.direction-label {
+    font-size: 0.8rem;
+    color: black;
+    margin-bottom: 0.2rem;
+}
+
+.flight-segment {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.flight-arrow {
+    padding: 0 1rem;
+}
+
+.flight-arrow .duration {
+    font-size: 1.5rem;
+    color: #f9a825;
+}
+
+.booking-section {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-left: 2rem;
+}
+
+.flight-dates {
+    display: flex;
+    gap: 1rem;
+    color: black;
+    font-size: 1,5rem;
+    white-space: nowrap; /* Чтобы даты не переносились */
+}
+
+.btn-book {
+    background: #f9a825;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+
+.btn-book:hover {
+    background: #e69500;
+}
+
+
+
+/* Общие стили хедера */
+.header {
+    background-color: transparent; /* Прозрачный по умолчанию */
+    transition: background-color 0.3s;
+}
+
+/* Стили хедера только на странице поиска */
+body.search-page .header {
+    background-color: #f9a825;
+}
+
+/* Стили кнопок только на странице поиска */
+body.search-page .btn-book {
+    background-color: #f9a825;
+    color: white;
+}
+
+body.search-page .btn-book:hover {
+    background-color: #f9a825;
+}
+
+body.search-page .btn-search {
+    background-color: #f9a825;
+    color: white;
+}
+
+body.search-page .btn-search:hover {
+    background-color: #e69500;
+}
+
+body.search-page .sort-btn {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+body.search-page .sort-btn:hover {
+    background-color: #ddd;
+}
+
+
+.search-page {
+    max-width: 1920px;
+    width: 100%;
+    margin-top: 50px;
+    
+    margin: 0 auto;
+    padding: 20px;
+
+}
+
+.search-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 100px;
+    max-width: 1800px;
+    width: 100%;
+}
+
+.search-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.search-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 30px;
+}
+
+.filters-sidebar {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.filter-group {
+    margin-bottom: 20px;
+}
+
+.filter-group h3 {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.full-width {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.price-range {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.price-range input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.results-main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sort-options {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 10px 0;
+}
+
+.sort-options span {
+    font-weight: 500;
+}
+
+.sort-btn {
+    padding: 5px 10px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.sort-btn:hover {
+    background-color: #ddd;
+}
+
+.tickets-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .search-fields {
+        grid-template-columns: 1fr;
+    }
+    
+    .search-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .filters-sidebar {
+        order: 2;
+    }
+    
+    .results-main {
+        order: 1;
+    }
+}
+
+
+/* Стили для хедера на странице профиля */
+body.profile-page .header {
+    background-color: #f9a825;
+}
+
+.profile-container {
+    max-width: 1200px;
+    margin: 80px auto 0;
+    padding: 20px;
+}
+
+.profile-content {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+}
+
+.profile-photo-section {
+    width: 300px;
+    position: sticky;
+    top: 100px;
+    text-align: center;
+}
+
+.profile-photo-container {
+    margin-bottom: 30px;
+}
+
+#profile-photo {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #f9a825;
+    margin-bottom: 20px;
+}
+
+.passport-upload {
+    background: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.profile-info-section {
+    flex: 1;
+    max-width: 600px;
+}
+
+.profile-info-card {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.save-btn {
+    background-color: #f9a825;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.save-btn:hover {
+    background-color: #e69500;
+}
+
+.upload-btn {
+    background-color: #f9a825;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.upload-btn:hover {
+    background-color: #e69500;
+}
+
+@media (max-width: 768px) {
+    .profile-content {
+        flex-direction: column;
+    }
+    
+    .profile-photo-section {
+        width: 100%;
+        position: static;
+    }
+}
+
+
+
+
+/* Стили для страницы бронирований */
+body.bookings-page .header {
+    background-color: #f9a825;
+}
+
+.bookings-page {
+    max-width: 1200px;
+    margin: 80px auto 0;
+    padding: 20px;
+}
+
+.bookings-container h1 {
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.booking-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    margin-bottom: 25px;
+    overflow: hidden;
+}
+
+.booking-header {
+    background: #f9a825;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.booking-number {
+    font-weight: 600;
+    margin-right: 15px;
+}
+
+.booking-status {
+    background: white;
+    color: #f9a825;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.booking-date {
+    margin-left: auto;
+    font-size: 0.9rem;
+}
+
+.booking-body {
+    padding: 20px;
+}
+
+.flight-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.flight-segment {
+    text-align: center;
+    flex: 1;
+}
+
+.flight-segment .time {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.flight-segment .airport {
+    font-size: 1.1rem;
+    color: #555;
+    margin: 5px 0;
+}
+
+.flight-segment .date {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.flight-duration {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.flight-duration .duration {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.flight-duration .arrow {
+    color: #f9a825;
+    font-size: 1.5rem;
+    margin: 5px 0;
+}
+
+.booking-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.airline-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.airline-info .airline {
+    font-weight: 600;
+    color: #333;
+}
+
+.airline-info .flight-class {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.price-info {
+    text-align: right;
+}
+
+.price-info .price {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.btn-cancel {
+    background: #ff4444;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-cancel:hover {
+    background: #cc0000;
+}
+
+.no-bookings {
+    text-align: center;
+    padding: 50px 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.no-bookings p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.btn-search {
+    background: #f9a825;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.btn-search:hover {
+    background: #e69500;
+    color: white;
+}
+
+
+
+
+/* Admin tickets styles */
+.admin-actions {
+    margin-bottom: 20px;
+}
+
+.admin-tickets-list {
+    overflow-x: auto;
+}
+
+.actions {
+    display: flex;
+    gap: 5px;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+
+.ticket-form {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    flex: 1;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+
+/* Дополнения к существующим стилям бронирований */
+
+body.bookings-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 40px 120px;
+    padding: 0;
+    width: 100%;
+}
+
+.bookings-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1900px;
+    margin: 30px auto 10;
+    padding:100px;
+    
+}
+
+.booking-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    margin-bottom: 25px;
+    overflow: hidden;
+    width: 100%; /* Уменьшаем ширину для лучшего визуального восприятия */
+    max-width: 1200px; /* Чуть уменьшаем максимальную ширину */
+    
+}
+
+.booking-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+}
+
+.booking-header {
+    padding: 15px 25px;
+}
+
+.booking-status {
+    background: white;
+    color: #f9a825;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.booking-date {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.flight-segment {
+    min-width: 150px;
+}
+
+.flight-duration .arrow {
+    color: #f9a825;
+    font-size: 1.8rem;
+    margin: 5px 0;
+}
+
+.booking-details {
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    margin-top: 15px;
+}
+
+.airline-info .airline {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.airline-info .flight-class {
+    font-size: 0.85rem;
+    color: #777;
+}
+
+.price-info .price {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.btn-cancel {
+    background: #ff4444;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.3s;
+}
+
+.btn-cancel:hover {
+    background: #cc0000;
+}
+
+
+/* Стили для админ-панели */
+
+/* Стили для хедера на странице админ-панели */
+body.admin-page .header {
+    background-color: #f9a825 !important; /* Оранжевый цвет как на всем сайте */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Стиль для активной страницы в меню (если нужно) */
+body.admin-page .navbar-menu a.active {
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+body.admin-page {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.admin-container {
+    max-width: 1200px;
+    margin: 80px auto 40px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.admin-section {
+    margin-bottom: 40px;
+}
+
+.admin-section h2 {
+    color: #222;
+    border-bottom: 2px solid #222;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.admin-table th {
+    background-color: #222;
+    color: white;
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.admin-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.admin-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.admin-table tr:hover {
+    background-color: #f0f0f0;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+    text-decoration: none;
+}
+
+.view-btn {
+    background-color: #444;
+    color: white;
+}
+
+.view-btn:hover {
+    background-color: #333;
+}
+
+.delete-btn {
+    background-color: #d11a2a;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #b01020;
+}
+
+.delete-form {
+    margin: 0;
+}
+
+/* Общие стили для всех админ-страниц */
+body.admin-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 10px -30px;
+    padding: 0;
+    width: 100%;
+}
+
+.admin-container {
+    max-width: 1200px;
+    margin: 80px auto 100px;
+    padding: 30px;
+    background: white;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+}
+
+.admin-container h1 {
+    color: #222;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    border-bottom: 2px solid #f9a825;
+    padding-bottom: 10px;
+}
+
+/* Стили для таблиц */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 0.95rem;
+}
+
+.admin-table th {
+    background-color: #333;
+    color: white;
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.admin-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.admin-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.admin-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Кнопки действий */
+.actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-success {
+    background-color: #f9a825;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #f9a825;
+}
+
+.btn-primary {
+    background-color: #333;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #333;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.back-btn {
+    background-color: #6c757d;
+    color: white;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+/* Стили для форм */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #444;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+/* Стили для карточек пользователей и бронирований */
+.profile-section {
+    margin-bottom: 40px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.profile-section h2 {
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.profile-info p,
+.passport-info p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.booking-card {
+    background: #fff;
+    border-left: 4px solid #f9a825;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .admin-container {
+        padding: 20px;
+        margin: 70px 15px 30px;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .admin-table {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    .actions {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+}
+
+/* Стиль для хедера (как на основном сайте) */
+body.admin-page .header {
+    background-color: #f9a825 !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+body.admin-page .navbar-menu a,
+body.admin-page .logo {
+    color: white !important;
+}
+
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 60px);
+    padding: 10px 80px;
+    margin-top: 10px; /* Учитываем высоту фиксированного хедера */
+    width: 100%;
+   /* Чтобы padding не влиял на общую ширину */
+}
+
+.auth-card, .auth-form {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto; /* Центрирование по горизонтали */
+}
+
+.auth-card h2, .auth-form h2 {
+    color: #333;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #f9a825;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(249, 168, 37, 0.2);
+}
+
+.btn-auth, .btn-submit {
+    width: 100%;
+    padding: 14px;
+    background-color: #f9a825;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 10px;
+}
+
+.btn-auth:hover, .btn-submit:hover {
+    background-color: #e69500;
+}
+
+.auth-links {
+    text-align: center;
+    margin-top: 25px;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.auth-links a, .auth-form p a {
+    color: #f9a825;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.auth-links a:hover, .auth-form p a:hover {
+    color: #e69500;
+    text-decoration: underline;
+}
+
+/* Специфичные стили для страницы входа */
+.auth-card {
+    max-width: 450px;
+}
+
+/* Специфичные стили для страницы регистрации */
+.auth-form {
+    max-width: 600px;
+}
+
+.auth-form .form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.auth-form .form-row .form-group {
+    flex: 1;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .auth-card, .auth-form {
+        padding: 30px 20px;
+    }
+    
+    .auth-form .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+/* Стили для хедера на страницах аутентификации */
+body.login-page .header,
+body.register-page .header {
+    background-color: #f9a825 !important;
+}
+
+body.login-page .navbar-menu,
+body.register-page .navbar-menu {
+    display: none; 
+}
+
+body.login-page .user-profile,
+body.register-page .user-profile {
+    display: none; 
+}
+
+body.login-page .logo,
+body.register-page .logo {
+    margin: 0 auto;
+    font-size: 1.5rem;
+}
+
+
+
+.auth-card, .auth-form {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto; 
+}
+
+
+.auth-form {
+    max-width: 600px;
+}
+
+.profile-page .profile-container {
+    margin-left: 200px; 
+    max-width: 1000px; 
+    width: calc(100% - 250px); 
+    padding-right: 20px; 
+}
+
+
+
+.profile-page .header {
+    width: 100%;
+    left: 0;
+    right: 0;
+    padding-left: 0;
+    margin-left: 0;
+}

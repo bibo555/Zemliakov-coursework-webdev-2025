@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}Профиль пользователя{% endblock %}
+
+{% block body_class %}profile-page{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <div class="profile-content">
+        <div class="profile-photo-section">
+            <div class="profile-photo-container">
+                <img id="profile-photo" src="{{ url_for('static', filename=user.photo if user.photo else 'images/default-avatar.jpg') }}" alt="Profile Photo">
+                <form id="photo-form" action="/upload_photo" method="POST" enctype="multipart/form-data" style="display: none;">
+                    <input type="file" id="photo-upload" name="photo" accept="image/*">
+                </form>
+                <button class="btn upload-btn" onclick="document.getElementById('photo-upload').click()">Изменить фото</button>
+            </div>
+            
+            <div class="passport-upload">
+                <h3>Фото паспорта</h3>
+                {% if user.passport_file %}
+                    <a href="{{ url_for('static', filename=user.passport_file) }}" target="_blank" id="passport-link">Просмотреть</a>
+                {% else %}
+                    <span id="passport-link">Не загружено</span>
+                {% endif %}
+                <form id="passport-form" action="/upload_passport" method="POST" enctype="multipart/form-data" style="display: none;">
+                    <input type="file" id="passport-upload" name="passport_file" accept=".pdf,.jpg,.jpeg,.png">
+                </form>
+                <button class="btn upload-btn" onclick="document.getElementById('passport-upload').click()">
+                    {% if user.passport_file %}Заменить{% else %}Загрузить{% endif %}
+                </button>
+            </div>
+        </div>
+
+        <div class="profile-info-section">
+            <form method="POST" action="{{ url_for('main.profile') }}">
+                <div class="profile-info-card">
+                    <div class="form-group">
+                        <label for="fullname">ФИО</label>
+                        <input type="text" id="fullname" name="fullname" value="{{ user.fullname }}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" value="{{ user.email }}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Номер телефона</label>
+                        <input type="tel" id="phone" name="phone" value="{{ user.phone }}" required>
+                    </div>
+
+                    {% if passport_data %}
+<div class="form-group">
+    <label for="passport">Паспортные данные</label>
+    <textarea id="passport" name="passport" readonly>
+        Серия {{ passport_data.series }} Номер {{ passport_data.number }}, выдан {{ passport_data.issued_by }} {{ passport_data.issue_date.strftime('%d.%m.%Y') }}
+    </textarea>
+</div>
+{% endif %}
+<div class="form-group">
+    <h3>Паспортные данные</h3>
+    <label for="passport_series">Серия</label>
+    <input type="text" id="passport_series" name="passport_series" 
+           value="{{ passport_data.series if passport_data else '' }}" required>
+    
+    <label for="passport_number">Номер</label>
+    <input type="text" id="passport_number" name="passport_number" 
+           value="{{ passport_data.number if passport_data else '' }}" required>
+    
+    <label for="passport_issued_by">Кем выдан</label>
+    <input type="text" id="passport_issued_by" name="passport_issued_by" 
+           value="{{ passport_data.issued_by if passport_data else '' }}" required>
+    
+    <label for="passport_issue_date">Дата выдачи</label>
+    <input type="date" id="passport_issue_date" name="passport_issue_date" 
+           value="{{ passport_data.issue_date.strftime('%Y-%m-%d') if passport_data else '' }}" required>
+</div>
+
+                    <button type="submit" class="save-btn">Сохранить изменения</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/profile.js') }}"></script>
+{% endblock %}

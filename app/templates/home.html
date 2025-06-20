@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="background">
+    <img src="/static/images/Image.png" alt="background">
+</div>
+
+
+<div class="main-content">
+    <div class="home-page">
+        <p>Найди свой рейс</p>
+        
+        <div class="tickets-list">
+            {% if tickets %}
+                {% with ticket=tickets[0] %}  <!-- Берем только первый билет -->
+                    {% include "ticket.html" %}
+                {% endwith %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

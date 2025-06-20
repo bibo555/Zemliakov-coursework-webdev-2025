@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Просмотр пользователя — FreeFly{% endblock %}
+
+{% block content %}
+<div class="admin-container">
+    <h1>Просмотр пользователя</h1>
+    <a href="{{ url_for('admin.admin') }}" class="btn back-btn">← Назад к списку</a>
+    
+    <div class="user-profile">
+        <div class="profile-section">
+            <h2>Основная информация</h2>
+            <div class="profile-info">
+                <p><strong>ID:</strong> {{ user.id }}</p>
+                <p><strong>Имя пользователя:</strong> {{ user.username }}</p>
+                <p><strong>Email:</strong> {{ user.email }}</p>
+                <p><strong>ФИО:</strong> {{ user.fullname or 'Не указано' }}</p>
+                <p><strong>Телефон:</strong> {{ user.phone or 'Не указан' }}</p>
+                <p><strong>Роль:</strong> {{ 'Администратор' if user.is_admin else 'Пользователь' }}</p>
+                <p><strong>Дата регистрации:</strong> {{ user.created_at.strftime('%d.%m.%Y %H:%M') }}</p>
+            </div>
+        </div>
+        
+        <div class="profile-section">
+            <h2>Паспортные данные</h2>
+            {% if passports %}
+                {% for passport in passports %}
+                <div class="passport-info">
+                    <p><strong>Серия и номер:</strong> {{ passport.series }} {{ passport.number }}</p>
+                    <p><strong>Кем выдан:</strong> {{ passport.issued_by }}</p>
+                    <p><strong>Дата выдачи:</strong> {{ passport.issue_date.strftime('%d.%m.%Y') }}</p>
+                    {% if passport.file_path %}
+                    <p><strong>Файл:</strong> <a href="{{ url_for('static', filename=passport.file_path) }}" target="_blank">Просмотреть</a></p>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            {% else %}
+                <p>Паспортные данные не добавлены</p>
+            {% endif %}
+        </div>
+        
+        <div class="profile-section">
+            <h2>Бронирования ({{ bookings|length }})</h2>
+            {% if bookings %}
+            <div class="bookings-list">
+                {% for booking in bookings %}
+                <div class="booking-card">
+                    <p><strong>Номер бронирования:</strong> {{ booking.booking_number }}</p>
+                    <p><strong>Рейс:</strong> {{ booking.flight.origin.city }} → {{ booking.flight.destination.city }}</p>
+                    <p><strong>Дата вылета:</strong> {{ booking.flight.departure_date.strftime('%d.%m.%Y') }} в {{ booking.flight.departure_time }}</p>
+                    <p><strong>Стоимость:</strong> {{ booking.price }} ₽</p>
+                    <p><strong>Статус:</strong> {{ booking.status }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+                <p>Нет бронирований</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

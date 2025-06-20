@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block title %}Поиск билетов — FreeFly{% endblock %}
+
+{% block body_class %}search-page{% endblock %}
+
+{% block content %}
+<div class="search-page">
+    <div class="search-container">
+        <form class="search-form" method="GET" action="{{ url_for('main.search') }}">
+            <div class="search-fields">
+                <div class="form-group">
+                    <label for="origin">Откуда</label>
+                    <input type="text" id="origin" name="origin" placeholder="Город или аэропорт (необязательно)" list="airports">
+                    <datalist id="airports">
+                        {% for airport in airports %}
+                            <option value="{{ airport.city }} ({{ airport.code }})">
+                        {% endfor %}
+                    </datalist>
+                </div>
+                
+                <div class="form-group">
+                    <label for="destination">Куда</label>
+                    <input type="text" id="destination" name="destination" placeholder="Город или аэропорт (необязательно)" list="airports">
+                </div>
+            </div>
+            
+            <div class="search-layout">
+                <div class="filters-sidebar">
+                    <div class="filter-group">
+                        <h3>Дата вылета</h3>
+                        <input type="date" id="departure_date" name="departure_date" class="full-width">
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h3>Цена</h3>
+                        <div class="price-range">
+                            <input type="number" id="min_price" name="min_price" placeholder="От" min="0">
+                            <span>-</span>
+                            <input type="number" id="max_price" name="max_price" placeholder="До" min="0">
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h3>Авиакомпания</h3>
+                        <div class="company">
+                            <input type="text" id="airline" name="airline" list="airline">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-search">Найти билеты</button>
+                </div>
+                
+                <div class="results-main">
+                    <div class="sort-options">
+                        <span>Сортировать по:</span>
+                        <button class="sort-btn" data-sort="price" data-direction="asc">Цене (дешевые)</button>
+                        <button class="sort-btn" data-sort="price" data-direction="desc">Цене (дорогие)</button>
+                        <button class="sort-btn" data-sort="duration" data-direction="asc">Времени (быстрые)</button>
+                        <button class="sort-btn" data-sort="duration" data-direction="desc">Времени (долгие)</button>
+                    </div>
+                    
+                    <datalist id="airline">
+                        {% for airline in airlines %}
+                            <option value="{{ airline.name }}">
+                        {% endfor %}
+                    </datalist>
+
+                    {% if tickets %}
+                    <div class="search-results">
+                        <div class="tickets-list">
+                            {% for ticket in tickets %}
+                            <div class="ticket-card">
+                                <div class="ticket-header">
+                                    <span class="airline">{{ ticket.airline }}</span>
+                                    <span class="price">{{ ticket.price }} ₽</span>
+                                </div>
+                                
+                                <div class="ticket-date">  
+                                    <span class="departure-date">{{ ticket.departure_date }}</span>
+                                </div>
+                                
+                                <div class="ticket-body">
+                                    <div class="flight-info">
+                                        <div class="flight-segment">
+                                            <div class="time">{{ ticket.departure_time }}</div>
+                                            <div class="airport">{{ ticket.origin }}</div>
+                                        </div>
+                                        
+                                        <div class="flight-duration">
+                                            <div class="duration">{{ ticket.duration }}</div>
+                                            <div class="arrow">→</div>
+                                        </div>
+                                        
+                                        <div class="flight-segment">
+                                            <div class="time">{{ ticket.arrival_time }}</div>
+                                            <div class="airport">{{ ticket.destination }}</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="ticket-footer">
+                                        <button class="btn-book" data-flight-id="{{ ticket.id }}">Забронировать</button>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% else %}
+                        <div class="no-results">
+                            <p>Попробуйте изменить параметры поиска</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

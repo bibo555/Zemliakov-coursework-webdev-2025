@@ -1,0 +1,35 @@
+{% for ticket in tickets %}
+<div class="ticket-card">
+    <div class="ticket-header">
+        <span class="airline">{{ ticket.airline }}</span>
+        <span class="price">{{ ticket.price }} ₽</span>
+    </div>
+
+    <div class="ticket-date">  
+        <span class="departure-date">{{ ticket.departure_date }}</span>
+    </div>
+    
+    <div class="ticket-body">
+        <div class="flight-info">
+            <div class="flight-segment">
+                <div class="time">{{ ticket.departure_time }}</div>
+                <div class="airport">{{ ticket.origin }}</div>
+            </div>
+            
+            <div class="flight-duration">
+                <div class="duration">{{ ticket.duration }}</div>
+                <div class="arrow">→</div>
+            </div>
+            
+            <div class="flight-segment">
+                <div class="time">{{ ticket.arrival_time }}</div>
+                <div class="airport">{{ ticket.destination }}</div>
+            </div>
+        </div>
+        
+        <div class="ticket-footer">
+            <button class="btn-book">Забронировать</button>
+        </div>
+    </div>
+</div>
+{% endfor %}

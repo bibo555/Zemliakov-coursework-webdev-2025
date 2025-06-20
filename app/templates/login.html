@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Вход — FreeFly{% endblock %}
+{% block body_class %}login-page{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card">
+        <h2>Вход в систему</h2>
+        
+        <form method="POST" action="{{ url_for('auth.login') }}">
+            <div class="form-group">
+                <label for="username">Имя пользователя</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Пароль</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            
+            <button type="submit" class="btn-auth">Войти</button>
+        </form>
+        
+        <div class="auth-links">
+            <span>Нет аккаунта? <a href="{{ url_for('auth.register') }}">Зарегистрируйтесь</a></span>
+        </div>
+    </div>
+</div>
+{% endblock %}

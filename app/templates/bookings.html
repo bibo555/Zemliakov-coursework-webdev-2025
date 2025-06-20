@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Мои бронирования{% endblock %}
+
+{% block body_class %}bookings-page{% endblock %}
+
+{% block content %}
+<div class="bookings-container">
+    <h1>Мои бронирования</h1>
+    
+    {% if bookings %}
+        {% for booking in bookings %}
+        <div class="booking-card">
+            <div class="booking-header">
+                <span class="booking-number">Бронирование #{{ booking.booking_number }}</span>
+                <span class="booking-status">{{ booking.status }}</span>
+                <span class="booking-date">{{ booking.booking_date.strftime('%d.%m.%Y %H:%M') }}</span>
+            </div>
+            
+            <div class="booking-body">
+                <div class="flight-info">
+                    <div class="flight-segment">
+                        <div class="time">{{ booking.flight.departure_time.strftime('%H:%M') }}</div>
+                        <div class="airport">{{ booking.flight.origin.city }} ({{ booking.flight.origin.code }})</div>
+                        <div class="date">{{ booking.flight.departure_date.strftime('%d.%m.%Y') }}</div>
+                    </div>
+                    
+                    <div class="flight-duration">
+                        <div class="duration">{{ booking.flight.duration // 60 }}ч {{ booking.flight.duration % 60 }}м</div>
+                        <div class="arrow">→</div>
+                    </div>
+                    
+                    <div class="flight-segment">
+                        <div class="time">{{ booking.flight.arrival_time.strftime('%H:%M') }}</div>
+                        <div class="airport">{{ booking.flight.destination.city }} ({{ booking.flight.destination.code }})</div>
+                        <div class="date">{{ booking.flight.departure_date.strftime('%d.%m.%Y') }}</div>
+                    </div>
+                </div>
+                
+                <div class="booking-details">
+                    <div class="airline-info">
+                        <span class="airline">{{ booking.flight.airline.name }}</span>
+                        <span class="flight-class">Эконом-класс</span>
+                    </div>
+                    
+                    <div class="price-info">
+                        <span class="price">{{ booking.price }} ₽</span>
+                        <form method="POST" action="{{ url_for('bookings.cancel_booking', booking_id=booking.id) }}">
+                            <button type="submit" class="btn-cancel">Отменить бронирование</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="no-bookings">
+            <p>У вас пока нет активных бронирований</p>
+            <a href="{{ url_for('main.search') }}" class="btn-search">Найти рейсы</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+<div class="ticket-card">
+    
+    
+    <div class="ticket-body">
+        <div class="flight-info">
+            <div class="flight-direction">
+                <span class="direction-label">Откуда</span>
+                <div class="flight-segment departure">
+                    <div class="airport">{{ ticket.origin }}</div>
+                </div>
+            </div>
+            
+            <div class="flight-arrow">
+                <div class="duration">→</div>
+            </div>
+            
+            <div class="flight-direction">
+                <span class="direction-label">Куда</span>
+                <div class="flight-segment arrival">
+                    <div class="airport">{{ ticket.destination }}</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="booking-section">
+            <div class="flight-dates">
+                <span class="departure-date">{{ ticket.departure }}</span>
+               
+                <span class="return-date">{{ ticket.return }}</span>
+            </div>
+
+            <div class="ticket-date">
+                <span class="departure-date">{{ ticket.departure_date }}</span>
+            </div>
+            <button class="btn-book">Поиск билетов</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}Добавить билет — FreeFly{% endblock %}
+
+{% block content %}
+<div class="admin-container">
+    <h1>Добавить новый билет</h1>
+    
+    <form method="POST" action="{{ url_for('admin.add_ticket') }}" class="ticket-form">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="airline">Авиакомпания</label>
+                 <select name="airline" required>
+        {% for airline in airlines %}
+            <option value="{{ airline.id }}">{{ airline.name }}</option>
+        {% endfor %}
+    </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="flight_number">Номер рейса</label>
+                <input type="text" id="flight_number" name="flight_number" required 
+                       placeholder="Например: SU-1234">
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="origin">Откуда</label>
+                    <select name="origin_id" required>
+        {% for airport in airports %}
+            <option value="{{ airport.id }}">{{ airport.city }} ({{ airport.code }})</option>
+        {% endfor %}
+    </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="destination">Куда</label>
+                <select name="destination_id" required>
+        {% for airport in airports %}
+            <option value="{{ airport.id }}">{{ airport.city }} ({{ airport.code }})</option>
+        {% endfor %}
+    </select>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="departure_date">Дата вылета</label>
+                <input type="date" id="departure_date" name="departure_date" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="price">Цена (руб)</label>
+                <input type="number" id="price" name="price" min="1000" step="100" required>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="departure_time">Время вылета</label>
+                <input type="time" id="departure_time" name="departure_time" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="arrival_time">Время прилета</label>
+                <input type="time" id="arrival_time" name="arrival_time" required>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="duration">Длительность полета</label>
+            <input type="text" id="duration" name="duration" required 
+                   placeholder="Например: 2ч 30м">
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Сохранить билет</button>
+            <a href="{{ url_for('admin.admin_tickets') }}" class="btn btn-secondary">Отмена</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

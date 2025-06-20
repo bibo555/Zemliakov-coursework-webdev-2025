@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Управление билетами — FreeFly{% endblock %}
+{% block body_class %}admin-page{% endblock %}
+{% block content %}
+<div class="admin-container">
+    <h1>Управление билетами</h1>
+    
+    <div class="admin-actions">
+        <a href="{{ url_for('admin.add_ticket') }}" class="btn btn-success">Добавить билет</a>
+    </div>
+    
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Авиакомпания</th>
+                <th>Откуда</th>
+                <th>Куда</th>
+                <th>Дата вылета</th>
+                <th>Цена</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ticket in tickets %}
+            <tr>
+                <td>{{ ticket.id }}</td>
+                <td>{{ ticket.airline }}</td>
+                <td>{{ ticket.origin }}</td>
+                <td>{{ ticket.destination }}</td>
+                <td>{{ ticket.departure_date }}</td>
+                <td>{{ ticket.price }} ₽</td>
+                <td class="actions">
+                    <a href="{{ url_for('admin.edit_ticket', ticket_id=ticket.id) }}" class="btn btn-primary">Изменить</a>
+                    <form action="{{ url_for('admin.delete_ticket', ticket_id=ticket.id) }}" method="POST" style="display: inline;">
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Вы уверены?')">Удалить</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
